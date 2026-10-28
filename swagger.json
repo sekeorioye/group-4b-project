@@ -1,0 +1,182 @@
+
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Note-Taking API",
+    "description": "API documentation for our Note Taking CRUD project.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    }
+  ],
+ 
+"paths": {
+  "/notes": {
+    "get": {
+      "summary": "Get all notes",
+      "description": "Retrieves all notes.",
+      "responses": {
+        "200": {
+          "description": "Notes retrieved successfully."
+        }
+      }
+    },
+    "post": {
+      "summary": "Create a new note",
+      "description": "Creates a note using the supplied title, content and author.",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": ["title", "content", "author"],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "My first note"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "This is my note."
+                },
+                "author": {
+                  "type": "string",
+                  "example": "Folaseke"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "Note created successfully."
+        },
+        "400": {
+          "description": "Required fields are missing."
+        }
+      }
+    }
+  },
+  "/notes/author": {
+    "get": {
+      "summary": "Get notes by author",
+      "description": "Retrieves notes written by a particular author.",
+      "parameters": [
+        {
+          "name": "author",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "Folaseke"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Notes retrieved successfully."
+        },
+        "404": {
+          "description": "No notes found for this author."
+        }
+      }
+    }
+  },
+  "/notes/{id}": {
+    "get": {
+      "summary": "Get a note by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Note retrieved successfully."
+        },
+        "404": {
+          "description": "Note not found."
+        }
+      }
+    },
+    "put": {
+      "summary": "Update a note",
+      "description": "Updates an existing note.",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Updated title"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "Updated content"
+                },
+                "author": {
+                  "type": "string",
+                  "example": "Folaseke"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Note updated successfully."
+        },
+        "404": {
+          "description": "Note not found."
+        }
+      }
+    },
+    "delete": {
+      "summary": "Delete a note",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Note deleted successfully."
+        },
+        "404": {
+          "description": "Note not found."
+        }
+      }
+    }
+  }
+}
+ 
+}

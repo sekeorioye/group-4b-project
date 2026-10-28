@@ -1,9 +1,13 @@
 const express = require('express'); // Importing Express.js framework
 require('dotenv').config(); // Importing dotenv to manage environment variables
 const app = express(); // Importing Express.js and initializing the app
+const swaggerUi = require('swagger-ui-express'); // Importing Swagger UI for documentation
+const swaggerDocument = require('./swagger.json');
 
 // JSON Parser Middleware
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //In-memory data storage for notes
  let notes=[
@@ -30,7 +34,7 @@ app.get('/notes/author', (req, res) => {
 app.get('/notes/:id', (req, res) => {
   const note= notes.find(n => n.id === parseInt(req.params.id));
   if (!note){
-   return res.status(404).json({error: "Note does not exist"});
+  return  res.status(404).json({error: "Note does not exist"});
   }
   res.status(200).json(note);
 });
@@ -73,6 +77,9 @@ app.delete('/notes/:id', (req, res) => {
 // Setting the port from environment variable or default to 3000  
 const port = process.env.PORT || 3000; 
 
+console.log("Environment PORT:", process.env.PORT);
+console.log("Selected PORT:", port);
+console.log("Starting server...");
 // Starting the server and listening on the specified port
 app.listen(port, () =>
   console.log(`Server is running on port http://localhost:${port}`)
