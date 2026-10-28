@@ -1,0 +1,5 @@
+$kind: http-request
+description: 'Deletes a note from the system by its ID. Sends a DELETE request to `/notes/:id` with the target note ID to permanently remove it from the server.'
+url: http://localhost:3000/notes/5
+method: DELETE
+order: 6000

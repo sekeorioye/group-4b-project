@@ -1,0 +1,8 @@
+$kind: http-request
+description: 'Retrieves a list of all notes stored in the system. Sends a GET request to `/notes` and returns the full collection of note records available on the server.'
+url: http://localhost:3000/notes
+method: GET
+body:
+  type: json
+  content: ""
+order: 1000

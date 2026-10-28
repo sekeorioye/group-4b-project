@@ -1,0 +1,7 @@
+$kind: http-request
+description: 'Retrieves all notes written by a specific author. Sends a GET request to `/notes/author` with the `author` query parameter to filter and return only notes belonging to that author.'
+url: http://localhost:3000/notes/author?author=Ifedayo
+method: GET
+queryParams:
+  author: Ifedayo
+order: 3000

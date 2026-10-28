@@ -1,0 +1,3 @@
+$kind: collection
+name: CRUD Note-Taking API
+description: 'This collection covers the full CRUD (Create, Read, Update, Delete) operations for a Note-Taking API running locally on `http://localhost:3000`. It allows you to manage notes by creating new entries, retrieving all notes or filtering by ID or author, updating existing notes, and deleting notes. Use this collection to develop, test, and validate the Note-Taking API endpoints during local development.'

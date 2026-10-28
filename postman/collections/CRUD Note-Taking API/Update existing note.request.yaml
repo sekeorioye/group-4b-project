@@ -1,0 +1,12 @@
+$kind: http-request
+description: 'Updates an existing note by its ID. Sends a PUT request to `/notes/:id` with a JSON body containing the fields to update (e.g., `author`). Returns the updated note record on success.'
+url: http://localhost:3000/notes/5
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"author\": \"Folaseke\"\r
+
+    }"
+order: 5000

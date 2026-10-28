@@ -1,0 +1,5 @@
+$kind: http-request
+description: 'Fetches a single note by its unique ID. Sends a GET request to `/notes/:id` and returns the matching note record if it exists.'
+url: http://localhost:3000/notes/3
+method: GET
+order: 2000
